@@ -48,7 +48,8 @@
             self.itemsInCategory = [[NSArray alloc] initWithArray:[[ImagesDataSource singleton] getAvailableColors]];
             break;
         case kCategoryPrice:
-            self.itemsInCategory = [[NSArray alloc] initWithArray:[[ImagesDataSource singleton] getAvailablePrice]];
+//            self.itemsInCategory = [[NSArray alloc] initWithArray:[[ImagesDataSource singleton] getAvailablePrice]];
+            self.itemsInCategory = kPriceRange;
             break;
         case kCategoryPattern:
             self.itemsInCategory = [[NSArray alloc] initWithArray:[[ImagesDataSource singleton] getAvailablePattern]];

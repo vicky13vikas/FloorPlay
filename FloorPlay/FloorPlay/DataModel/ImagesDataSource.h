@@ -35,6 +35,7 @@
 -(NSArray*)getAvailablePrice;
 
 -(NSArray*)getImagesInCategory:(CategoryType)category withValue:(NSString*)selectedString;
+-(NSArray*)getItemsInPriceRange:(NSString*)selectedString;
 
 -(NSArray*)searchImagesWithDetail:(NSString*)selectedString;
 

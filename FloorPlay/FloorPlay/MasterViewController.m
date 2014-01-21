@@ -146,7 +146,23 @@
 
 -(void)selectionDoneInCategory:(CategoryType)category withString:(NSString *)selectedString
 {
-    imageListToShow = [[ImagesDataSource singleton] getImagesInCategory:category withValue:selectedString];
+    NSArray* itemsInSelectedRange;
+    if(category == kCategoryPrice)
+    {
+        itemsInSelectedRange = [[ImagesDataSource singleton] getItemsInPriceRange:selectedString];
+    }
+    else
+    {
+        itemsInSelectedRange = [[ImagesDataSource singleton] getImagesInCategory:category withValue:selectedString];
+    }
+    if(itemsInSelectedRange.count == 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Floorplay" message:@"No Items found" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    else{
+        imageListToShow = itemsInSelectedRange;
+    }
     [self.tableView reloadData];
     [[self.navigationItem rightBarButtonItem] setEnabled:YES];
 }

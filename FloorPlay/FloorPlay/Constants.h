@@ -23,7 +23,9 @@
 
 #define SAVED_JSON_FILE @"JsonData.txt"
 
-#define kCategories @"By Color, By Size, By Pattern, By Material, By Price"
+#define kCategories @[@"By Color", @"By Size", @"By Pattern", @"By Material", @"By Price"]
+
+#define kPriceRange @[@"Below 10,000", @"10,001 to 25,000", @"25,001 to 45,000", @"45,001 to 90,000", @"Greater than 90,000"]
 
 
 typedef enum {

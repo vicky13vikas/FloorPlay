@@ -214,6 +214,70 @@
     return result;
 }
 
+-(CGFloat)minimumRangeInString:(NSString*)selectedString
+{
+    if([selectedString isEqualToString:kPriceRange[0]])
+    {
+        return 0.00;
+    }
+    else if([selectedString isEqualToString:kPriceRange[1]])
+    {
+        return 10001.00;
+    }
+    else if([selectedString isEqualToString:kPriceRange[2]])
+    {
+        return 25001.00;
+    }
+    else if([selectedString isEqualToString:kPriceRange[3]])
+    {
+        return 45001.00;
+    }
+    else
+        return 90001;
+}
+
+-(CGFloat)maximumRangeInString:(NSString*)selectedString
+{
+    if([selectedString isEqualToString:kPriceRange[0]])
+    {
+        return 10000.00;
+    }
+    else if([selectedString isEqualToString:kPriceRange[1]])
+    {
+        return 25000.00;
+    }
+    else if([selectedString isEqualToString:kPriceRange[2]])
+    {
+        return 45000.00;
+    }
+    else if([selectedString isEqualToString:kPriceRange[3]])
+    {
+        return 90000.00;
+    }
+    else
+        return 9999999.00;
+}
+
+-(NSArray*)getItemsInPriceRange:(NSString*)selectedString
+{
+    NSEnumerator *e = [_objects objectEnumerator];
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    ImageData *ob;
+    
+    CGFloat minimumRange = [self minimumRangeInString:selectedString];
+    CGFloat maximumRange = [self maximumRangeInString:selectedString];
+    
+    while (ob = [e nextObject]) {
+       if([ob.price floatValue] >= minimumRange && [ob.price floatValue] <= maximumRange)
+       {
+           [result addObject:ob];
+       }
+    }
+    return result;
+
+}
+
+
 -(NSArray*)searchImagesWithDetail:(NSString*)selectedString
 {
     NSEnumerator *e = [_objects objectEnumerator];
