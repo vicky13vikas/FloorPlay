@@ -42,6 +42,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     _firstViewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"FirstViewController"];
+    _firstViewController.master = (MasterViewController*)[[self.splitViewController.viewControllers objectAtIndex:0] topViewController];
     [self presentViewController:_firstViewController animated:NO completion:nil];
         
     

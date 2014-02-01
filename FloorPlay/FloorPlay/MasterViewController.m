@@ -16,11 +16,17 @@
 {
     NSMutableArray *_objects;
     NSArray *imageListToShow;
+    BOOL isEditing;
+    NSMutableArray *customRows;
+    
+    BOOL isSearchMode;
 }
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnEdit;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnShowAll;
 - (IBAction)ShowAllTapped:(id)sender;
+- (IBAction)btnEditTapped:(UITabBarItem*)sender;
 
 
 @end
@@ -42,6 +48,29 @@
     
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     imageListToShow = [[ImagesDataSource singleton] objects];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if(self.isCustom)
+    {
+        _btnShowAll.enabled = YES;
+        _btnShowAll.title = @"Reset";
+        _btnEdit.enabled = YES;
+
+        customRows = [self readFromFile];
+        if(customRows.count == 0)
+        {
+            imageListToShow = [[ImagesDataSource singleton] objects];
+            customRows = [[NSMutableArray alloc] initWithCapacity:imageListToShow.count];
+            for (int i =0 ; i< imageListToShow.count; i++)
+            {
+                [customRows addObject:[NSNumber numberWithInt:i]];
+            }
+            [self writeToFile];
+        }
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -100,8 +129,21 @@
 {
     MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainTableViewCell" forIndexPath:indexPath];
 
-    ImageData *image = [imageListToShow objectAtIndex:indexPath.row];
+    ImageData *image;
+    if(_isCustom && !isSearchMode)
+    {
+        NSNumber *indexFromCustom = (NSNumber*)[customRows objectAtIndex:indexPath.row];
+        image = [imageListToShow objectAtIndex:[indexFromCustom integerValue]];
+    }
+    else
+    {
+        image = [imageListToShow objectAtIndex:indexPath.row];
+    }
     cell.image = image;
+    if(isEditing)
+    {
+        cell.showsReorderControl = YES;
+    }
     return cell;
 }
 
@@ -132,6 +174,46 @@
 {
     return 120;
 }
+
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [customRows exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
+    [self writeToFile];
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleNone;
+}
+
+- (BOOL)tableView:(UITableView *)tableview shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+
+-(void) writeToFile
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *customPlistPath =  [documentsDirectory stringByAppendingPathComponent:@"CustomImages.plist"];
+    
+    [customRows writeToFile:customPlistPath atomically:NO];
+}
+
+- (NSMutableArray*)readFromFile
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *customPlistPath =  [documentsDirectory stringByAppendingPathComponent:@"CustomImages.plist"];
+
+    return [NSMutableArray arrayWithContentsOfFile:customPlistPath];
+}
+
+#pragma -mark Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -164,7 +246,17 @@
         imageListToShow = itemsInSelectedRange;
     }
     [self.tableView reloadData];
-    [[self.navigationItem rightBarButtonItem] setEnabled:YES];
+    if(_isCustom)
+    {
+        _btnShowAll.title = @"Reset";
+    }
+    isSearchMode = YES;
+    _btnEdit.enabled = NO;
+    isEditing = NO;
+    [[self tableView] setEditing:NO animated:YES];
+    _btnEdit.title = @"Edit";
+    
+    _btnShowAll.title = @"Show All";
 }
 
 #pragma -mark UISearchBarDelegate
@@ -195,7 +287,10 @@
     {
         imageListToShow = [[ImagesDataSource singleton] searchImagesWithDetail:searchText];
         [self.tableView reloadData];
-        [[self.navigationItem rightBarButtonItem] setEnabled:YES];
+        if(_isCustom)
+        {
+            _btnShowAll.title = @"Reset";
+        }
     }
 }
 
@@ -239,11 +334,60 @@
     return  UIInterfaceOrientationMaskLandscape;
 }
 
-- (IBAction)ShowAllTapped:(id)sender {
-    imageListToShow = [[ImagesDataSource singleton] objects];
-    [self.tableView reloadData];
-    [[self.navigationItem rightBarButtonItem] setEnabled:NO];
-    [self.searchBar resignFirstResponder];
-    [self.searchBar setText:nil];
+- (IBAction)ShowAllTapped:(id)sender
+{
+    if([_btnShowAll.title isEqualToString:@"Reset"])
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Reset" message:@"Are you sure? All your changes will be lost." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil] show];
+    }
+    else
+    {
+        imageListToShow = [[ImagesDataSource singleton] objects];
+        [self.tableView reloadData];
+        [self.searchBar resignFirstResponder];
+        [self.searchBar setText:nil];
+        if(_isCustom)
+        {
+            _btnShowAll.title = @"Reset";
+        }
+    }
+    isSearchMode = NO;
+    _btnEdit.enabled = YES;
 }
+
+- (IBAction)btnEditTapped:(UIBarButtonItem* )sender
+{
+    if ([self.tableView isEditing])
+    {
+        isEditing = NO;
+        [[self tableView] setEditing:NO animated:YES];
+        sender.title = @"Edit";
+    }
+    else
+    {
+        isEditing = YES;
+        [[self tableView] setEditing:YES animated:YES];
+        sender.title = @"Done";
+    }
+}
+
+-(void)resetPlist
+{
+    [customRows removeAllObjects];
+    for (int i =0 ; i< imageListToShow.count; i++)
+    {
+        [customRows addObject:[NSNumber numberWithInt:i]];
+    }
+    [self writeToFile];
+    [self.tableView reloadData];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [self resetPlist];
+    }
+}
+
 @end

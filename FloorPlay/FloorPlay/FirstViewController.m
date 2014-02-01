@@ -65,6 +65,11 @@
 - (IBAction)dateSourceSelected:(id)sender
 {
     _dataFrom = [sender restorationIdentifier];
+    
+    if([_dataFrom isEqualToString:@"Custom"])
+    {
+        self.master.isCustom = YES;
+    }
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 

@@ -443,6 +443,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="40">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Edit" id="bzs-0R-bev">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="btnEditTapped:" destination="19" id="yoK-8J-6TK"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Show All" id="LZJ-dp-944">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -451,6 +457,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnEdit" destination="bzs-0R-bev" id="9WT-sy-Foh"/>
                         <outlet property="btnShowAll" destination="LZJ-dp-944" id="bx6-GM-53O"/>
                         <outlet property="searchBar" destination="TdT-sE-9qx" id="aIp-LT-rsv"/>
                     </connections>

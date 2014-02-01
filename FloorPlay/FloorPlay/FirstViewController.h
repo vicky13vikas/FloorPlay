@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterViewController.h"
+
+@class MasterViewController;
 
 @interface FirstViewController : UIViewController
+
 @property (strong, nonatomic) NSString *dataFrom; //This will be inventory or custom depending upon the first selection
+
+@property (strong, nonatomic) MasterViewController *master;
 
 @end
