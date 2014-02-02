@@ -117,6 +117,27 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zM4-7R-zpj">
+                                <rect key="frame" x="30" y="320" width="42" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="arrow_prev.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnPreviousImage:" destination="4" eventType="touchUpInside" id="DeQ-04-WUA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0D7-tz-7es">
+                                <rect key="frame" x="630" y="320" width="42" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow_next.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnNextImage:" destination="4" eventType="touchUpInside" id="fNK-zz-Zau"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -151,6 +172,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnNext" destination="0D7-tz-7es" id="Hd6-6X-Rwu"/>
+                        <outlet property="btnPrevious" destination="zM4-7R-zpj" id="xlD-Y1-nXP"/>
                         <outlet property="detailTextView" destination="Q0L-Hq-HZK" id="ckH-Ta-8r7"/>
                         <outlet property="filmStripCollection" destination="shK-u7-nis" id="5F1-lY-5UP"/>
                         <outlet property="imageView" destination="ySf-yi-rk0" id="den-OH-1iY"/>
@@ -564,6 +587,8 @@
     </scenes>
     <resources>
         <image name="Topbar.png" width="640" height="62"/>
+        <image name="arrow_next.png" width="300" height="300"/>
+        <image name="arrow_prev.png" width="300" height="300"/>
         <image name="btn_Signin.png" width="378" height="72"/>
         <image name="fullscreen.png" width="100" height="100"/>
         <image name="logo.bmp" width="677" height="399"/>

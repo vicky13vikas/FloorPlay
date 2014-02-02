@@ -18,6 +18,7 @@
 @interface DetailViewController () <selectCategoryDelegate, UIPopoverControllerDelegate, MWPhotoBrowserDelegate>
 {
     BOOL isAppearFirstTime;
+    NSIndexPath *selectedIndexPath;
 }
 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -25,9 +26,13 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *filmStripCollection;
+@property (weak, nonatomic) IBOutlet UIButton *btnNext;
+@property (weak, nonatomic) IBOutlet UIButton *btnPrevious;
 
 @property (weak, nonatomic) IBOutlet UITextView *detailTextView;
 - (IBAction)fullScreentapped:(id)sender;
+- (IBAction)btnPreviousImage:(id)sender;
+- (IBAction)btnNextImage:(id)sender;
 
 @end
 
@@ -84,10 +89,25 @@
     [self.filmStripCollection reloadData];
     [self setDescription];
     
+    _filmStripCollection.allowsSelection = YES;
+    
 //    _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
 //    _imageView.layer.shadowOffset = CGSizeMake(0, 0);
 //    _imageView.layer.shadowOpacity = 1.0;
 //    _imageView.layer.shadowRadius = 3.0;
+    
+    if(selectedIndexPath.row <= 0)
+    {
+        [_btnPrevious setEnabled:NO];
+    }
+    if(self.image.imagesList.count > 1)
+    {
+        _btnNext.enabled = YES;
+    }
+    else
+    {
+        _btnNext.enabled = NO;
+    }
 }
 
 -(void)setDescription
@@ -169,9 +189,26 @@
 -(void)updateImage
 {
     self.imageView.image = [[ImagesDataSource singleton] getImageAtIndex:0 forImage:self.image];
+    selectedIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+
     [self.filmStripCollection reloadData];
+    UICollectionViewCell *cell = [_filmStripCollection cellForItemAtIndexPath:selectedIndexPath];
+    cell.backgroundColor = [UIColor blueColor];
     [self setDescription];
     self.scrollView.zoomScale = 1.0;
+    
+    if(selectedIndexPath.row <= 0)
+    {
+        [_btnPrevious setEnabled:NO];
+    }
+    if(self.image.imagesList.count > 1)
+    {
+        _btnNext.enabled = YES;
+    }
+    else
+    {
+        _btnNext.enabled = NO;
+    }
 }
 
 #pragma -mark UICollectionVew Delegates and datasource
@@ -198,6 +235,7 @@
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor blueColor];
     self.scrollView.zoomScale = 1.0;
+    selectedIndexPath = indexPath;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -274,6 +312,65 @@
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
     nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:nc animated:YES completion:nil];
+}
+
+-(void)deselectAllCells
+{
+    for(int i = 0; i < [_filmStripCollection numberOfItemsInSection:0]; i++)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:selectedIndexPath.section];
+        UICollectionViewCell *cell = [_filmStripCollection cellForItemAtIndexPath:indexPath];
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+}
+- (IBAction)btnPreviousImage:(UIButton*)sender
+{
+    [self deselectAllCells];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:selectedIndexPath.row-1 inSection:selectedIndexPath.section];
+    UICollectionViewCell *cell = [_filmStripCollection cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor blueColor];
+    
+    selectedIndexPath = indexPath;
+
+    self.imageView.image = [[ImagesDataSource singleton] getImageAtIndex:indexPath.row forImage:self.image];
+    if(selectedIndexPath.row <= 0)
+    {
+        [sender setEnabled:NO];
+    }
+    if(self.image.imagesList.count > 1)
+    {
+        _btnNext.enabled = YES;
+    }
+    else
+    {
+        _btnNext.enabled = NO;
+    }
+}
+
+- (IBAction)btnNextImage:(id)sender
+{
+    [self deselectAllCells];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:selectedIndexPath.row+1 inSection:selectedIndexPath.section];
+    UICollectionViewCell *cell = [_filmStripCollection cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor blueColor];
+    
+    selectedIndexPath = indexPath;
+    
+    self.imageView.image = [[ImagesDataSource singleton] getImageAtIndex:indexPath.row forImage:self.image];
+    if(selectedIndexPath.row >= self.image.imagesList.count - 1)
+    {
+        [sender setEnabled:NO];
+    }
+    if(self.image.imagesList.count > 1)
+    {
+        _btnPrevious.enabled = YES;
+    }
+    else
+    {
+        _btnPrevious.enabled = NO;
+    }
 }
 
 
