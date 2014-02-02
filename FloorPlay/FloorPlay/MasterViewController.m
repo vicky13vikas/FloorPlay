@@ -250,6 +250,10 @@
     {
         _btnShowAll.title = @"Reset";
     }
+    else
+    {
+        _btnShowAll.enabled = YES;
+    }
     isSearchMode = YES;
     _btnEdit.enabled = NO;
     isEditing = NO;
@@ -290,6 +294,10 @@
         if(_isCustom)
         {
             _btnShowAll.title = @"Reset";
+        }
+        else
+        {
+            _btnShowAll.enabled = YES;
         }
     }
 }
@@ -350,9 +358,14 @@
         {
             _btnShowAll.title = @"Reset";
         }
+        else
+        {
+            _btnShowAll.enabled = NO;
+        }
     }
     isSearchMode = NO;
-    _btnEdit.enabled = YES;
+    if(_isCustom)
+        _btnEdit.enabled = YES;
 }
 
 - (IBAction)btnEditTapped:(UIBarButtonItem* )sender

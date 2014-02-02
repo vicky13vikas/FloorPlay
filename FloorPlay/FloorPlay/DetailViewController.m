@@ -82,12 +82,18 @@
     
     self.imageView.image = [[ImagesDataSource singleton] getImageAtIndex:0 forImage:self.image];
     [self.filmStripCollection reloadData];
-    [self.detailTextView setText:self.image.description];
+    [self setDescription];
     
 //    _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
 //    _imageView.layer.shadowOffset = CGSizeMake(0, 0);
 //    _imageView.layer.shadowOpacity = 1.0;
 //    _imageView.layer.shadowRadius = 3.0;
+}
+
+-(void)setDescription
+{
+    NSString *description = [NSString stringWithFormat:@"Name     : %@\nSize       : %@\nColor     : %@\nPattern   : %@\nPrice      : %@\nMaterial  : %@\nDescription : %@", self.image.name, self.image.size, self.image.color, self.image.pattern, self.image.price, self.image.material, self.image.description];
+    [self.detailTextView setText:description];
 }
 
 - (void)didReceiveMemoryWarning
@@ -164,7 +170,7 @@
 {
     self.imageView.image = [[ImagesDataSource singleton] getImageAtIndex:0 forImage:self.image];
     [self.filmStripCollection reloadData];
-    [self.detailTextView setText:self.image.description];
+    [self setDescription];
     self.scrollView.zoomScale = 1.0;
 }
 
