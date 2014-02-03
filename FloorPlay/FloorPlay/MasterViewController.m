@@ -46,15 +46,18 @@
 {
     [super viewDidLoad];
     
-    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    imageListToShow = [[ImagesDataSource singleton] objects];
+//    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+//    imageListToShow = [[ImagesDataSource singleton] objects];
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(self.isCustom)
-    {
+    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    imageListToShow = [[ImagesDataSource singleton] objects];
+    
+//    if(self.isCustom)
+//    {
         _btnShowAll.enabled = YES;
         _btnShowAll.title = @"Reset";
         _btnEdit.enabled = YES;
@@ -70,7 +73,8 @@
             }
             [self writeToFile];
         }
-    }
+    [self.tableView reloadData];
+//    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -88,7 +92,7 @@
     label.text = NSLocalizedString(@"", @"");
     [label sizeToFit];
     
-    UIImage *barImage = [UIImage imageWithImage:[UIImage imageNamed:@"Topbar.png"] scaledToSize:CGSizeMake(self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height+5)];
+    UIImage *barImage = [UIImage imageWithImage:[UIImage imageNamed:@"Topbar.png"] scaledToSize:CGSizeMake(self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height+20)];
     
     [self.navigationController.navigationBar setBackgroundImage:barImage forBarMetrics:UIBarMetricsDefault];
     
@@ -130,7 +134,7 @@
     MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainTableViewCell" forIndexPath:indexPath];
 
     ImageData *image;
-    if(_isCustom && !isSearchMode)
+    if(!isSearchMode)
     {
         NSNumber *indexFromCustom = (NSNumber*)[customRows objectAtIndex:indexPath.row];
         image = [imageListToShow objectAtIndex:[indexFromCustom integerValue]];
@@ -197,18 +201,38 @@
 
 -(void) writeToFile
 {
+    NSString *fileName;
+    if(_isCustom)
+    {
+        fileName = @"CustomImages.plist";
+    }
+    else
+    {
+        fileName = @"InventoryImages.plist";
+    }
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *customPlistPath =  [documentsDirectory stringByAppendingPathComponent:@"CustomImages.plist"];
+    NSString *customPlistPath =  [documentsDirectory stringByAppendingPathComponent:fileName];
     
     [customRows writeToFile:customPlistPath atomically:NO];
 }
 
 - (NSMutableArray*)readFromFile
 {
+    NSString *fileName;
+    if(_isCustom)
+    {
+        fileName = @"CustomImages.plist";
+    }
+    else
+    {
+        fileName = @"InventoryImages.plist";
+    }
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *customPlistPath =  [documentsDirectory stringByAppendingPathComponent:@"CustomImages.plist"];
+    NSString *customPlistPath =  [documentsDirectory stringByAppendingPathComponent:fileName];
 
     return [NSMutableArray arrayWithContentsOfFile:customPlistPath];
 }
@@ -246,14 +270,14 @@
         imageListToShow = itemsInSelectedRange;
     }
     [self.tableView reloadData];
-    if(_isCustom)
-    {
+//    if(_isCustom)
+//    {
         _btnShowAll.title = @"Reset";
-    }
-    else
-    {
-        _btnShowAll.enabled = YES;
-    }
+//    }
+//    else
+//    {
+//        _btnShowAll.enabled = YES;
+//    }
     isSearchMode = YES;
     _btnEdit.enabled = NO;
     isEditing = NO;
@@ -291,14 +315,14 @@
     {
         imageListToShow = [[ImagesDataSource singleton] searchImagesWithDetail:searchText];
         [self.tableView reloadData];
-        if(_isCustom)
-        {
+//        if(_isCustom)
+//        {
             _btnShowAll.title = @"Reset";
-        }
-        else
-        {
-            _btnShowAll.enabled = YES;
-        }
+//        }
+//        else
+//        {
+//            _btnShowAll.enabled = YES;
+//        }
     }
 }
 
@@ -354,17 +378,17 @@
         [self.tableView reloadData];
         [self.searchBar resignFirstResponder];
         [self.searchBar setText:nil];
-        if(_isCustom)
-        {
+//        if(_isCustom)
+//        {
             _btnShowAll.title = @"Reset";
-        }
-        else
-        {
-            _btnShowAll.enabled = NO;
-        }
+//        }
+//        else
+//        {
+//            _btnShowAll.enabled = NO;
+//        }
     }
     isSearchMode = NO;
-    if(_isCustom)
+//    if(_isCustom)
         _btnEdit.enabled = YES;
 }
 

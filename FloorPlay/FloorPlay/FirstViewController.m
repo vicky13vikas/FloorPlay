@@ -70,6 +70,8 @@
     {
         self.master.isCustom = YES;
     }
+    else
+        self.master.isCustom = NO;
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 

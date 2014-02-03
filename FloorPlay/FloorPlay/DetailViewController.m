@@ -33,6 +33,7 @@
 - (IBAction)fullScreentapped:(id)sender;
 - (IBAction)btnPreviousImage:(id)sender;
 - (IBAction)btnNextImage:(id)sender;
+- (IBAction)homeButtonTapped:(id)sender;
 
 @end
 
@@ -64,11 +65,11 @@
 {
     [super viewDidAppear:animated];
     
-    if(isAppearFirstTime)
-    {
+//    if(isAppearFirstTime)
+//    {
         isAppearFirstTime = NO;
         self.image = [[[ImagesDataSource singleton] objects] objectAtIndex:0];
-    }
+//    }
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
@@ -81,7 +82,7 @@
     label.text = NSLocalizedString(@"Detail", @"");
     [label sizeToFit];
     
-    UIImage *barImage = [UIImage imageWithImage:[UIImage imageNamed:@"Topbar.png"] scaledToSize:CGSizeMake(self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height+5)];
+    UIImage *barImage = [UIImage imageWithImage:[UIImage imageNamed:@"Topbar.png"] scaledToSize:CGSizeMake(self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height+20)];
     
     [self.navigationController.navigationBar setBackgroundImage:barImage forBarMetrics:UIBarMetricsDefault];
     
@@ -371,6 +372,13 @@
     {
         _btnPrevious.enabled = NO;
     }
+}
+
+- (IBAction)homeButtonTapped:(id)sender
+{
+    _firstViewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"FirstViewController"];
+    _firstViewController.master = (MasterViewController*)[[self.splitViewController.viewControllers objectAtIndex:0] topViewController];
+    [self presentViewController:_firstViewController animated:NO completion:nil];
 }
 
 
