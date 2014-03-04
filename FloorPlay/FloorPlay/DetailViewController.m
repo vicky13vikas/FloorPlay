@@ -79,7 +79,7 @@
     // ^-Use UITextAlignmentCenter for older SDKs.
     label.textColor = [UIColor whiteColor]; // change this color
     self.navigationItem.titleView = label;
-    label.text = NSLocalizedString(@"Detail", @"");
+    label.text = NSLocalizedString(@"Floor Play", @"");
     [label sizeToFit];
     
     UIImage *barImage = [UIImage imageWithImage:[UIImage imageNamed:@"Topbar.png"] scaledToSize:CGSizeMake(self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height+20)];
