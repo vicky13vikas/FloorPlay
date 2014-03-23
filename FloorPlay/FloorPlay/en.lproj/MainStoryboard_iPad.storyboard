@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F37" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="5">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
@@ -147,6 +147,17 @@
                                 </state>
                                 <connections>
                                     <action selector="fullScreentapped:" destination="4" eventType="touchUpInside" id="mfm-1o-WpG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-ww-0cH">
+                                <rect key="frame" x="520" y="82" width="111" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="7.6210799180409516e-05" green="1" blue="0.048493236000895723" alpha="0.37" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Virtual Tryout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="virtualTryoutClicked:" destination="4" eventType="touchUpInside" id="KTt-ow-hmY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -578,14 +589,105 @@
             </objects>
             <point key="canvasLocation" x="-366" y="248"/>
         </scene>
+        <!--Quad Control View Controller-->
+        <scene sceneID="AbX-nc-Aze">
+            <objects>
+                <viewController storyboardIdentifier="AGQuadControlViewController" id="L4W-ZN-Swp" customClass="AGQuadControlViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="I30-ej-mv4"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qs3-sy-fxy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9gH-3T-lXU">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="sampleimg_enhanced.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1EG-Ta-Ksf">
+                                <rect key="frame" x="0.0" y="0.0" width="891" height="596"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="backgroundColor" red="0.2576029854233266" green="1" blue="0.14545283648107366" alpha="0.37" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView contentMode="TopLeft" fixedFrame="YES" image="controlpoint.png" highlightedImage="controlpoint_h.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Jh-jH-ga6">
+                                <rect key="frame" x="38" y="679" width="46" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="f0K-7W-YaX" appends="YES" id="L49-u3-NdC"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="TopLeft" fixedFrame="YES" image="controlpoint.png" highlightedImage="controlpoint_h.png" translatesAutoresizingMaskIntoConstraints="NO" id="oPu-CA-KSq">
+                                <rect key="frame" x="729" y="56" width="46" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="86X-N7-4Hz" appends="YES" id="XBc-bL-IIW"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="TopLeft" fixedFrame="YES" image="controlpoint.png" highlightedImage="controlpoint_h.png" translatesAutoresizingMaskIntoConstraints="NO" id="axj-7j-zkC">
+                                <rect key="frame" x="729" y="679" width="46" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="uWo-ZP-pyG" appends="YES" id="Kdm-8E-y4v"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="TopLeft" fixedFrame="YES" image="controlpoint.png" highlightedImage="controlpoint_h.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Vx-fg-mRP">
+                                <rect key="frame" x="38" y="83" width="46" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pSi-SI-J4Z" appends="YES" id="RpV-pQ-cZS"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="bottomLeftControl" destination="4Jh-jH-ga6" id="DNn-qA-mYE"/>
+                        <outlet property="bottomRightControl" destination="axj-7j-zkC" id="Yi0-VH-aNm"/>
+                        <outlet property="imageView" destination="1EG-Ta-Ksf" id="2hy-UF-sBD"/>
+                        <outlet property="topLeftControl" destination="5Vx-fg-mRP" id="Kyb-IH-VxH"/>
+                        <outlet property="topRightControl" destination="oPu-CA-KSq" id="7Jx-a5-yAV"/>
+                        <outlet property="view" destination="9gH-3T-lXU" id="pKK-lk-08Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wwF-wu-PWG" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="pSi-SI-J4Z">
+                    <connections>
+                        <action selector="panGestureChanged:" destination="L4W-ZN-Swp" id="IOr-Tr-Vej"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="86X-N7-4Hz">
+                    <connections>
+                        <action selector="panGestureChanged:" destination="L4W-ZN-Swp" id="U5e-UW-C9o"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="uWo-ZP-pyG">
+                    <connections>
+                        <action selector="panGestureChanged:" destination="L4W-ZN-Swp" id="nNO-X3-EZ2"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="f0K-7W-YaX">
+                    <connections>
+                        <action selector="panGestureChanged:" destination="L4W-ZN-Swp" id="0f1-gF-VPM"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2650" y="74"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Topbar.png" width="640" height="62"/>
         <image name="arrow_next.png" width="300" height="300"/>
         <image name="arrow_prev.png" width="300" height="300"/>
         <image name="btn_Signin.png" width="378" height="72"/>
+        <image name="controlpoint.png" width="45" height="45"/>
+        <image name="controlpoint_h.png" width="45" height="45"/>
         <image name="fullscreen.png" width="100" height="100"/>
         <image name="logo.bmp" width="677" height="399"/>
+        <image name="sampleimg_enhanced.jpg" width="898" height="596"/>
         <image name="textViewBG.png" width="299" height="178"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

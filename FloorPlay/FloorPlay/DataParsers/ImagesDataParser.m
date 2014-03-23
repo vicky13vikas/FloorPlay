@@ -26,11 +26,11 @@
 	[dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
 
     NSError *error = nil;
-    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    NSArray *imagesArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     if(!error)
     {
-        NSArray *imagesArray = [response objectForKey:@"image"];
+//        NSArray *imagesArray = [response objectForKey:@"image"];
         if(imagesArray.count > 0)
         {
             for(id image in imagesArray)
@@ -47,9 +47,13 @@
                 NSMutableArray *imageArray = [[NSMutableArray alloc] init];
                 for (int i=0; i < RELATIVE_IMAGES_COUNT; i++)
                 {
-                    if ([[image objectForKey:[NSString stringWithFormat:@"image%d",i+1]] length] > 0)
+                    NSString *img = [image objectForKey:[NSString stringWithFormat:@"image%d",i+1]];
+                    if(![img isKindOfClass:[NSNull class]])
                     {
-                        [imageArray addObject:[image objectForKey:[NSString stringWithFormat:@"image%d",i+1]]];
+                        if ([img length] > 0)
+                        {
+                            [imageArray addObject:img];
+                        }
                     }
                 }
                 

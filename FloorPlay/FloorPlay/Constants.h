@@ -9,13 +9,14 @@
 
 #define IS_FIRST_TIME_LAUNCH @"isAppLauchedFirstTime"
 
-#define SERVER_URL @"http://sysbiam.com//ImageMSys/api/"
+//#define SERVER_URL @"http://sysbiam.com//ImageMSys/api/"
+#define SERVER_URL @"http://www.mobiminds.co.in/ImageMSys/api/"
 
 //#define SERVER_URL_FOR_FILE @"http://www.sysbiam.com//ImageMSys/images/"
 
 //#define SERVER_URL_FOR_FILE @"http://www.sysbiam.com/ImageSrc/data/images/"
 
-#define SERVER_URL_FOR_FILE @"http://www.sysbiam.com/ImageSrc/data/images/"
+#define SERVER_URL_FOR_FILE @"http://www.mobiminds.co.in/ImageSrc/data/images/"
 
 
 

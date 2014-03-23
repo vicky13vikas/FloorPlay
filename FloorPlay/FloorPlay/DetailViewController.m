@@ -14,6 +14,7 @@
 #import "SearchCategoryViewController.h"
 #import "SelectedCategoryViewController.h"
 #import "MWPhotoBrowser.h"
+#import "AGQuadControlViewController.h"
 
 @interface DetailViewController () <selectCategoryDelegate, UIPopoverControllerDelegate, MWPhotoBrowserDelegate>
 {
@@ -34,6 +35,7 @@
 - (IBAction)btnPreviousImage:(id)sender;
 - (IBAction)btnNextImage:(id)sender;
 - (IBAction)homeButtonTapped:(id)sender;
+- (IBAction)virtualTryoutClicked:(id)sender;
 
 @end
 
@@ -379,6 +381,13 @@
     _firstViewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"FirstViewController"];
     _firstViewController.master = (MasterViewController*)[[self.splitViewController.viewControllers objectAtIndex:0] topViewController];
     [self presentViewController:_firstViewController animated:NO completion:nil];
+}
+
+- (IBAction)virtualTryoutClicked:(id)sender
+{
+    AGQuadControlViewController *vc = [[self storyboard] instantiateViewControllerWithIdentifier:@"AGQuadControlViewController"];
+//    vc.image =
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 
