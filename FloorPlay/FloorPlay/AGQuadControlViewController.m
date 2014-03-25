@@ -36,7 +36,7 @@
 
 - (void)createAndApplyQuad
 {
-    NSLog(@"topLeftControl  -> %@\n topRightControl  -> %@\n bottomRightControl  -> %@\n bottomLeftControl  -> %@\n ", NSStringFromCGPoint(self.topLeftControl.center), NSStringFromCGPoint(self.topRightControl.center), NSStringFromCGPoint(self.bottomRightControl.center), NSStringFromCGPoint(self.bottomLeftControl.center));
+//    NSLog(@"topLeftControl  -> %@\n topRightControl  -> %@\n bottomRightControl  -> %@\n bottomLeftControl  -> %@\n ", NSStringFromCGPoint(self.topLeftControl.center), NSStringFromCGPoint(self.topRightControl.center), NSStringFromCGPoint(self.bottomRightControl.center), NSStringFromCGPoint(self.bottomLeftControl.center));
     
     AGQuad quad = AGQuadMakeWithCGPoints(self.topLeftControl.center,
                                          self.topRightControl.center,
@@ -85,5 +85,27 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)freezeTapped:(id)sender
+{
+    NSMutableDictionary *dicToSave = [[NSMutableDictionary alloc] init];
+    
+    [dicToSave setObject:CFBridgingRelease(CGRectCreateDictionaryRepresentation(self.topLeftControl.frame)) forKey:@"topLeftControl"];
+    [dicToSave setObject:CFBridgingRelease(CGRectCreateDictionaryRepresentation(self.topRightControl.frame)) forKey:@"topRightControl"];
+    [dicToSave setObject:CFBridgingRelease(CGRectCreateDictionaryRepresentation(self.bottomLeftControl.frame)) forKey:@"bottomLeftControl"];
+    [dicToSave setObject:CFBridgingRelease(CGRectCreateDictionaryRepresentation(self.bottomRightControl.frame)) forKey:@"bottomRightControl"];
+    
+}
+
+- (IBAction)changeCarpetTapped:(id)sender
+{
+    
+}
+
+- (IBAction)selectBackgroundTapped:(id)sender
+{
+    
+}
+
 
 @end

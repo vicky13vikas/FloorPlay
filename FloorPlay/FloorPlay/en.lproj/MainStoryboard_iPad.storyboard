@@ -654,6 +654,9 @@
                                 <state key="normal" title="Select Background">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="selectBackgroundTapped:" destination="L4W-ZN-Swp" eventType="touchUpInside" id="m0O-Qf-iKQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgR-I2-sND">
                                 <rect key="frame" x="388" y="729" width="46" height="30"/>
@@ -661,6 +664,9 @@
                                 <state key="normal" title="Freeze">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="freezeTapped:" destination="L4W-ZN-Swp" eventType="touchUpInside" id="Uir-Rq-FIU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmh-Pq-UDf">
                                 <rect key="frame" x="482" y="729" width="104" height="30"/>
@@ -668,6 +674,9 @@
                                 <state key="normal" title="Change Carpet">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeCarpetTapped:" destination="L4W-ZN-Swp" eventType="touchUpInside" id="mEM-b8-AXQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
