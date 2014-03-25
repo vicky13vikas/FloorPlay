@@ -601,13 +601,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="sampleimg_enhanced.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1EG-Ta-Ksf">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="sampleimg_enhanced.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1EG-Ta-Ksf">
                                 <rect key="frame" x="0.0" y="0.0" width="891" height="596"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" red="0.2576029854233266" green="1" blue="0.14545283648107366" alpha="0.37" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView contentMode="TopLeft" fixedFrame="YES" image="controlpoint.png" highlightedImage="controlpoint_h.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Jh-jH-ga6">
-                                <rect key="frame" x="38" y="679" width="46" height="46"/>
+                                <rect key="frame" x="38" y="660" width="46" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -615,7 +615,7 @@
                                 </connections>
                             </imageView>
                             <imageView contentMode="TopLeft" fixedFrame="YES" image="controlpoint.png" highlightedImage="controlpoint_h.png" translatesAutoresizingMaskIntoConstraints="NO" id="oPu-CA-KSq">
-                                <rect key="frame" x="729" y="56" width="46" height="46"/>
+                                <rect key="frame" x="914" y="83" width="46" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -623,7 +623,7 @@
                                 </connections>
                             </imageView>
                             <imageView contentMode="TopLeft" fixedFrame="YES" image="controlpoint.png" highlightedImage="controlpoint_h.png" translatesAutoresizingMaskIntoConstraints="NO" id="axj-7j-zkC">
-                                <rect key="frame" x="729" y="679" width="46" height="46"/>
+                                <rect key="frame" x="914" y="660" width="46" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -638,11 +638,43 @@
                                     <outletCollection property="gestureRecognizers" destination="pSi-SI-J4Z" appends="YES" id="RpV-pQ-cZS"/>
                                 </connections>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzr-O0-3Gy">
+                                <rect key="frame" x="129" y="729" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneTapped:" destination="L4W-ZN-Swp" eventType="touchUpInside" id="bPH-BI-BE7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do7-tq-7IA">
+                                <rect key="frame" x="208" y="729" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Select Background">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgR-I2-sND">
+                                <rect key="frame" x="388" y="729" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Freeze">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmh-Pq-UDf">
+                                <rect key="frame" x="482" y="729" width="104" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change Carpet">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="bottomLeftControl" destination="4Jh-jH-ga6" id="DNn-qA-mYE"/>

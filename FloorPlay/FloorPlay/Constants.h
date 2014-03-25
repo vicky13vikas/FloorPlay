@@ -16,7 +16,9 @@
 
 //#define SERVER_URL_FOR_FILE @"http://www.sysbiam.com/ImageSrc/data/images/"
 
-#define SERVER_URL_FOR_FILE @"http://www.mobiminds.co.in/ImageSrc/data/images/"
+//#define SERVER_URL_FOR_FILE @"http://www.mobiminds.co.in/ImageSrc/data/images/"
+#define SERVER_URL_FOR_FILE @"http://www.mobiminds.co.in/ImageMSys/images/"
+
 
 
 

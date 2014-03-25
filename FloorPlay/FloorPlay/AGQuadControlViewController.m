@@ -47,13 +47,20 @@
     {
         self.imageView.layer.quadrilateral = quad;
     }
-    self.maskView.layer.shadowPath = [UIBezierPath bezierPathWithAGQuad:quad].CGPath;
+//    self.maskView.layer.shadowPath = [UIBezierPath bezierPathWithAGQuad:quad].CGPath;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.imageView.image = _image;
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self createAndApplyQuad];
+//    [self createAndApplyQuad];
+    [self performSelector:@selector(createAndApplyQuad) withObject:nil afterDelay:0.1];
 }
 
 - (IBAction)panGestureChanged:(UIPanGestureRecognizer *)recognizer
@@ -73,6 +80,10 @@
 -(BOOL)shouldAutorotate
 {
     return NO;
+}
+- (IBAction)doneTapped:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

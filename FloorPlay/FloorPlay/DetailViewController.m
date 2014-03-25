@@ -386,7 +386,7 @@
 - (IBAction)virtualTryoutClicked:(id)sender
 {
     AGQuadControlViewController *vc = [[self storyboard] instantiateViewControllerWithIdentifier:@"AGQuadControlViewController"];
-//    vc.image =
+    vc.image = _imageView.image;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
