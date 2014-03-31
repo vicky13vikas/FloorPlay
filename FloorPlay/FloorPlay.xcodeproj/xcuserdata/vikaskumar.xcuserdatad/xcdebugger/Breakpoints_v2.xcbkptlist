@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FloorPlay/DetailViewController.m"
-            timestampString = "409084663.323054"
+            filePath = "FloorPlay/FirstViewController.m"
+            timestampString = "417279588.988633"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "-scrollViewDidZoom:"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "-downloadAllImages"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,45 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FloorPlay/DetailViewController.m"
-            timestampString = "409084663.323054"
+            filePath = "FloorPlay/FirstViewController.m"
+            timestampString = "417279591.370622"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-scrollViewWillBeginZooming:withView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FloorPlay/DetailViewController.m"
-            timestampString = "409084663.323054"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "-scrollViewDidEndZooming:withView:atScale:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FloorPlay/DetailViewController.m"
-            timestampString = "409084663.323054"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "-doubleTapAction:"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "-downloadAllImages"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
