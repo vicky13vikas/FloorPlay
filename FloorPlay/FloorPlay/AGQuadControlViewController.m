@@ -50,8 +50,6 @@
 
 - (void)createAndApplyQuad
 {
-//    NSLog(@"topLeftControl  -> %@\n topRightControl  -> %@\n bottomRightControl  -> %@\n bottomLeftControl  -> %@\n ", NSStringFromCGPoint(self.topLeftControl.center), NSStringFromCGPoint(self.topRightControl.center), NSStringFromCGPoint(self.bottomRightControl.center), NSStringFromCGPoint(self.bottomLeftControl.center));
-    
     AGQuad quad = AGQuadMakeWithCGPoints(self.topLeftControl.center,
                                          self.topRightControl.center,
                                          self.bottomRightControl.center,
@@ -61,7 +59,6 @@
     {
         self.imageView.layer.quadrilateral = quad;
     }
-//    self.maskView.layer.shadowPath = [UIBezierPath bezierPathWithAGQuad:quad].CGPath;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -73,9 +70,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    [self createAndApplyQuad];
     [self performSelector:@selector(loadFreezedImage) withObject:nil afterDelay:0.2];
-//  [self performSelector:@selector(createAndApplyQuad) withObject:nil afterDelay:0.2];
 }
 
 - (IBAction)panGestureChanged:(UIPanGestureRecognizer *)recognizer
@@ -220,13 +215,18 @@
     
     [_cameraPicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     
-    [self presentViewController:_cameraPicker animated:YES completion:nil];
+//    [self presentViewController:_cameraPicker animated:YES completion:nil];
+    CGRect rect = [_barView convertRect:_btnChangeBG.frame toView:self.view];
+    _popOver = [[UIPopoverController alloc] initWithContentViewController:_cameraPicker];
+    [_popOver presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
-    [_cameraPicker dismissViewControllerAnimated:NO completion:nil];
+//    [_cameraPicker dismissViewControllerAnimated:NO completion:nil];
+    [_popOver dismissPopoverAnimated:YES];
     
     UIImage *_pickedAvatar;
     
@@ -244,7 +244,8 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [self dismissViewControllerAnimated:NO completion:nil];
+//    [self dismissViewControllerAnimated:NO completion:nil];
+    [_popOver dismissPopoverAnimated:YES];
 }
 
 -(void)loadbackgroundImages
@@ -286,6 +287,10 @@
     self.topRightControl.hidden = hidden;
     self.bottomRightControl.hidden = hidden;
     self.bottomLeftControl.hidden = hidden;
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    viewController.contentSizeForViewInPopover = CGSizeMake(600, 600);
 }
 
 @end

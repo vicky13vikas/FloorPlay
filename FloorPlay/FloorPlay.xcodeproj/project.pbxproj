@@ -119,6 +119,8 @@
 		4EC0A42817BE62BF00B57483 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0A42717BE62BF00B57483 /* FirstViewController.m */; };
 		4EC0A42C17BE6A5300B57483 /* UIImageCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0A42B17BE6A5300B57483 /* UIImageCategories.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4ED43DCC18F0795D00BA185F /* CarpetImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED43DCB18F0795C00BA185F /* CarpetImagesViewController.m */; };
+		4ED43DD018F0830A00BA185F /* UIViewController+OrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED43DCF18F0830A00BA185F /* UIViewController+OrientationFix.m */; };
+		4ED43DD318F0832D00BA185F /* UIImagePickerController+OrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED43DD218F0832D00BA185F /* UIImagePickerController+OrientationFix.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,6 +330,10 @@
 		4EC0A42B17BE6A5300B57483 /* UIImageCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageCategories.m; sourceTree = "<group>"; };
 		4ED43DCA18F0795C00BA185F /* CarpetImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarpetImagesViewController.h; sourceTree = "<group>"; };
 		4ED43DCB18F0795C00BA185F /* CarpetImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarpetImagesViewController.m; sourceTree = "<group>"; };
+		4ED43DCE18F0830A00BA185F /* UIViewController+OrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+OrientationFix.h"; sourceTree = "<group>"; };
+		4ED43DCF18F0830A00BA185F /* UIViewController+OrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+OrientationFix.m"; sourceTree = "<group>"; };
+		4ED43DD118F0832D00BA185F /* UIImagePickerController+OrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+OrientationFix.h"; sourceTree = "<group>"; };
+		4ED43DD218F0832D00BA185F /* UIImagePickerController+OrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+OrientationFix.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +484,10 @@
 				4E75C5BD18DF272B003EFC56 /* AGQuadControlViewController.h */,
 				4E75C5BE18DF272B003EFC56 /* AGQuadControlViewController.m */,
 				4E9F526218F04F240066328B /* BackgroundImagesViewController.h */,
+				4ED43DCE18F0830A00BA185F /* UIViewController+OrientationFix.h */,
+				4ED43DCF18F0830A00BA185F /* UIViewController+OrientationFix.m */,
+				4ED43DD118F0832D00BA185F /* UIImagePickerController+OrientationFix.h */,
+				4ED43DD218F0832D00BA185F /* UIImagePickerController+OrientationFix.m */,
 				4E9F526318F04F240066328B /* BackgroundImagesViewController.m */,
 				4ED43DCA18F0795C00BA185F /* CarpetImagesViewController.h */,
 				4ED43DCB18F0795C00BA185F /* CarpetImagesViewController.m */,
@@ -869,6 +879,7 @@
 				4E75C5FD18DF27AD003EFC56 /* AGVector3D.m in Sources */,
 				4EA6C42118620C1F00210CB1 /* SDWebImageDecoder.m in Sources */,
 				4EA5F62117F6D7D3001841E6 /* StringCategories.m in Sources */,
+				4ED43DD318F0832D00BA185F /* UIImagePickerController+OrientationFix.m in Sources */,
 				4EA5F62317F6D7D3001841E6 /* UIViewControllerCategories.m in Sources */,
 				4EA5F63A17F6DB4F001841E6 /* FloorPlayServices.m in Sources */,
 				4EA6C42918620C1F00210CB1 /* UIImage+WebP.m in Sources */,
@@ -911,6 +922,7 @@
 				4E75C5FF18DF27AD003EFC56 /* CAAnimationBlockDelegate.m in Sources */,
 				4EA6C42818620C1F00210CB1 /* UIImage+MultiFormat.m in Sources */,
 				4EA6C42A18620C1F00210CB1 /* UIImageView+WebCache.m in Sources */,
+				4ED43DD018F0830A00BA185F /* UIViewController+OrientationFix.m in Sources */,
 				4EA6C41318620C1F00210CB1 /* MWCaptionView.m in Sources */,
 				4EA6C41818620C1F00210CB1 /* MWZoomingScrollView.m in Sources */,
 			);

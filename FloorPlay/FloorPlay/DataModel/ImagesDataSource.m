@@ -101,7 +101,9 @@
             NSArray *dirPathSearch = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *docDirPath = [dirPathSearch objectAtIndex:0];
             NSString *dirPath = [docDirPath stringByAppendingPathComponent:@"Images/"];
-            NSString *filePath = [dirPath stringByAppendingPathComponent:[imageItem.imagesList objectAtIndex:index]];
+            NSString *filePath;
+            if(imageItem.imagesList.count > 0)
+                filePath = [dirPath stringByAppendingPathComponent:[imageItem.imagesList objectAtIndex:index]];
             
             imageToReturn = [UIImage imageWithContentsOfFile:filePath];
         }

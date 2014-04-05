@@ -31,8 +31,13 @@
 {
     [super layoutSubviews];
     _imagePreview.image = [[ImagesDataSource singleton] getImageAtIndex:0 forImage:self.image];
-    _lblName.text = _image.name;
-    _lblDesc.text = _image.description;
+    if (_image.name) {
+        _lblName.text = _image.name;
+    }
+    
+    if ([_image.description isKindOfClass:[NSString class]]) {
+        _lblDesc.text = _image.description;
+    }
 }
 
 @end
