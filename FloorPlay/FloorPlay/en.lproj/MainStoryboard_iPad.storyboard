@@ -729,6 +729,8 @@
                         <outlet property="barView" destination="PPJ-Ao-E4V" id="Sd7-Ef-TCL"/>
                         <outlet property="bottomLeftControl" destination="4Jh-jH-ga6" id="DNn-qA-mYE"/>
                         <outlet property="bottomRightControl" destination="axj-7j-zkC" id="Yi0-VH-aNm"/>
+                        <outlet property="btnChangeBG" destination="do7-tq-7IA" id="hav-Ik-cfD"/>
+                        <outlet property="btnChangeCarpet" destination="Jmh-Pq-UDf" id="buD-yC-B0j"/>
                         <outlet property="imageView" destination="1EG-Ta-Ksf" id="2hy-UF-sBD"/>
                         <outlet property="topLeftControl" destination="5Vx-fg-mRP" id="Kyb-IH-VxH"/>
                         <outlet property="topRightControl" destination="oPu-CA-KSq" id="7Jx-a5-yAV"/>
@@ -769,7 +771,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="BackgroundImagesViewController" autoresizesArchivedViewToFullSize="NO" id="wFw-3E-Hmp" customClass="BackgroundImagesViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="QTF-dz-mMD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DLW-Sd-W1r">
@@ -806,6 +808,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I7m-YO-jM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3814" y="74"/>
+        </scene>
+        <!--Carpet Images View Controller-->
+        <scene sceneID="bjB-h0-WJD">
+            <objects>
+                <collectionViewController storyboardIdentifier="CarpetImagesViewController" autoresizesArchivedViewToFullSize="NO" id="q5O-Y1-OZY" customClass="CarpetImagesViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="ccp-K8-4gw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="18d-OC-lhK">
+                            <size key="itemSize" width="140" height="140"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="MQT-T9-cgT">
+                                <rect key="frame" x="10" y="10" width="140" height="140"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="555" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabbar_icon.png" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cux-54-EHU">
+                                            <rect key="frame" x="5" y="5" width="130" height="130"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="q5O-Y1-OZY" id="ejH-3E-Qcc"/>
+                            <outlet property="delegate" destination="q5O-Y1-OZY" id="snG-qG-nOO"/>
+                        </connections>
+                    </collectionView>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kdl-Y7-PFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3814" y="798"/>
         </scene>
     </scenes>
     <resources>

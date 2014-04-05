@@ -118,6 +118,7 @@
 		4EC0A42517BE618500B57483 /* Topbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC0A42417BE618500B57483 /* Topbar.png */; };
 		4EC0A42817BE62BF00B57483 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0A42717BE62BF00B57483 /* FirstViewController.m */; };
 		4EC0A42C17BE6A5300B57483 /* UIImageCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC0A42B17BE6A5300B57483 /* UIImageCategories.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4ED43DCC18F0795D00BA185F /* CarpetImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED43DCB18F0795C00BA185F /* CarpetImagesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -325,6 +326,8 @@
 		4EC0A42717BE62BF00B57483 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		4EC0A42A17BE6A5300B57483 /* UIImageCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageCategories.h; sourceTree = "<group>"; };
 		4EC0A42B17BE6A5300B57483 /* UIImageCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageCategories.m; sourceTree = "<group>"; };
+		4ED43DCA18F0795C00BA185F /* CarpetImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarpetImagesViewController.h; sourceTree = "<group>"; };
+		4ED43DCB18F0795C00BA185F /* CarpetImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarpetImagesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -476,6 +479,8 @@
 				4E75C5BE18DF272B003EFC56 /* AGQuadControlViewController.m */,
 				4E9F526218F04F240066328B /* BackgroundImagesViewController.h */,
 				4E9F526318F04F240066328B /* BackgroundImagesViewController.m */,
+				4ED43DCA18F0795C00BA185F /* CarpetImagesViewController.h */,
+				4ED43DCB18F0795C00BA185F /* CarpetImagesViewController.m */,
 				4E9A7E5B17F7449200E6ED7F /* DataModel */,
 				4E9A7E6217F7449200E6ED7F /* DataParsers */,
 				4EA5F61517F6D7D3001841E6 /* Libraries */,
@@ -874,6 +879,7 @@
 				4E75C60018DF27AD003EFC56 /* CALayer+AGQuad.m in Sources */,
 				4E9E96E1185CD52A00875D6B /* SelectedCategoryViewController.m in Sources */,
 				4E75C5FA18DF27AD003EFC56 /* AGQuad.m in Sources */,
+				4ED43DCC18F0795D00BA185F /* CarpetImagesViewController.m in Sources */,
 				4EA5F65417F6DD58001841E6 /* AFImageRequestOperation.m in Sources */,
 				4EA6C41418620C1F00210CB1 /* MWPhoto.m in Sources */,
 				4E75C5F318DF27AD003EFC56 /* AGCorner.m in Sources */,

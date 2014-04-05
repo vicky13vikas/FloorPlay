@@ -88,7 +88,7 @@
 //    cell.backgroundColor = [UIColor blueColor];
     UIImage *selectedImage = [(UIImageView*)[cell viewWithTag:555] image];
     
-    [_delegate backgroungImageDidSeleted:selectedImage];
+    [_delegate backgroungImageDidChange:selectedImage];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath

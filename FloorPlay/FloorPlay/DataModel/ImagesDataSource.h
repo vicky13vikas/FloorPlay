@@ -27,6 +27,7 @@
 -(void)update;
 
 -(UIImage*) getImageAtIndex:(NSInteger)index forImage:(ImageData *)image;
+-(UIImage*)getImageFromImageName:(NSString*)imageName;
 
 -(NSArray*)getAvailableColors;
 -(NSArray*)getAvailablePattern;

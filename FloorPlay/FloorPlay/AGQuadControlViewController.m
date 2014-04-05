@@ -13,8 +13,9 @@
 #import "UIView+FrameExtra.h"
 #import "UIBezierPath+AGQuad.h"
 #import "BackgroundImagesViewController.h"
+#import "CarpetImagesViewController.h"
 
-@interface AGQuadControlViewController ()<UIAlertViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, BackgroundImagesDelegate>
+@interface AGQuadControlViewController ()<UIAlertViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, BackgroundImagesDelegate, CarpetImagesDelegate>
 {
     BOOL isContolsHidden;
 }
@@ -31,6 +32,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @property (strong, nonatomic) UIPopoverController  *popOver;
+@property (weak, nonatomic) IBOutlet UIButton *btnChangeCarpet;
+@property (weak, nonatomic) IBOutlet UIButton *btnChangeBG;
 
 
 @end
@@ -115,7 +118,12 @@
 
 - (IBAction)changeCarpetTapped:(id)sender
 {
+    CarpetImagesViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CarpetImagesViewController"];
+    vc.delegate = self;
     
+    CGRect rect = [_barView convertRect:_btnChangeCarpet.frame toView:self.view];
+    _popOver = [[UIPopoverController alloc] initWithContentViewController:vc];
+    [_popOver presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (IBAction)selectBackgroundTapped:(UIButton*)sender
@@ -244,13 +252,19 @@
     BackgroundImagesViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"BackgroundImagesViewController"];
     vc.delegate = self;
     
+    CGRect rect = [_barView convertRect:_btnChangeBG.frame toView:self.view];
     _popOver = [[UIPopoverController alloc] initWithContentViewController:vc];
-    [_popOver presentPopoverFromRect:_barView.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [_popOver presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
--(void)backgroungImageDidSeleted:(UIImage *)image
+-(void)backgroungImageDidChange:(UIImage *)image
 {
     _backgroundImageView.image = image;
+}
+
+-(void)carpetImageDidChange:(UIImage *)image
+{
+    _imageView.image = image;
 }
 
 -(void)timerTriggered

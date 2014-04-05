@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol BackgroundImagesDelegate <NSObject>
-    -(void) backgroungImageDidSeleted :(UIImage*)image;
+    -(void) backgroungImageDidChange :(UIImage*)image;
 
 @end
 
