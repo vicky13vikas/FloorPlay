@@ -12,8 +12,12 @@
 #import "CALayer+AGQuad.h"
 #import "UIView+FrameExtra.h"
 #import "UIBezierPath+AGQuad.h"
+#import "BackgroundImagesViewController.h"
 
-@interface AGQuadControlViewController ()<UIAlertViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface AGQuadControlViewController ()<UIAlertViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, BackgroundImagesDelegate>
+{
+    BOOL isContolsHidden;
+}
 
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) IBOutlet UIView *topLeftControl;
@@ -24,7 +28,9 @@
 @property (nonatomic, strong) IBOutlet UISwitch *switchControl;
 @property (weak, nonatomic) IBOutlet UIView *barView;
 @property (strong, nonatomic) UIImagePickerController *cameraPicker;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
+@property (strong, nonatomic) UIPopoverController  *popOver;
 
 
 @end
@@ -34,8 +40,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    isContolsHidden = NO;
     //    [self createAndApplyQuad];
+
 }
 
 - (void)createAndApplyQuad
@@ -185,6 +192,7 @@
             [self showCamera];
             break;
         case 1:
+            [self loadbackgroundImages];
             break;
             
         default:
@@ -231,5 +239,39 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
+-(void)loadbackgroundImages
+{
+    BackgroundImagesViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"BackgroundImagesViewController"];
+    vc.delegate = self;
+    
+    _popOver = [[UIPopoverController alloc] initWithContentViewController:vc];
+    [_popOver presentPopoverFromRect:_barView.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+-(void)backgroungImageDidSeleted:(UIImage *)image
+{
+    _backgroundImageView.image = image;
+}
+
+-(void)timerTriggered
+{
+    if(!isContolsHidden)
+        [self setControlsHidden:YES];
+}
+
+- (IBAction)handleSingletap:(id)sender
+{
+    [self setControlsHidden:!isContolsHidden];
+}
+
+-(void)setControlsHidden:(BOOL)hidden
+{
+    isContolsHidden = hidden;
+    _barView.hidden = hidden;
+    self.topLeftControl.hidden = hidden;
+    self.topRightControl.hidden = hidden;
+    self.bottomRightControl.hidden = hidden;
+    self.bottomLeftControl.hidden = hidden;
+}
 
 @end

@@ -64,6 +64,8 @@
 		4E9A7E6A17F7449200E6ED7F /* ImagesDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9A7E6417F7449200E6ED7F /* ImagesDataParser.m */; };
 		4E9A7E8017F75E1500E6ED7F /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9A7E7F17F75E1500E6ED7F /* MainTableViewCell.m */; };
 		4E9E96E1185CD52A00875D6B /* SelectedCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9E96E0185CD52A00875D6B /* SelectedCategoryViewController.m */; };
+		4E9F526418F04F240066328B /* BackgroundImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9F526318F04F240066328B /* BackgroundImagesViewController.m */; };
+		4E9F526718F05C2D0066328B /* DefaultBG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E9F526618F05C2D0066328B /* DefaultBG.jpg */; };
 		4E9FA09C185E0D7100E78867 /* navBarBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9FA09B185E0D7000E78867 /* navBarBtn.png */; };
 		4E9FA0A0185E10A100E78867 /* textViewBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9FA09F185E10A100E78867 /* textViewBG.png */; };
 		4EA5F62017F6D7D3001841E6 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA5F61817F6D7D3001841E6 /* AsyncImageView.m */; };
@@ -226,6 +228,9 @@
 		4E9A7E7F17F75E1500E6ED7F /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
 		4E9E96DF185CD52A00875D6B /* SelectedCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedCategoryViewController.h; sourceTree = "<group>"; };
 		4E9E96E0185CD52A00875D6B /* SelectedCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedCategoryViewController.m; sourceTree = "<group>"; };
+		4E9F526218F04F240066328B /* BackgroundImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundImagesViewController.h; sourceTree = "<group>"; };
+		4E9F526318F04F240066328B /* BackgroundImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundImagesViewController.m; sourceTree = "<group>"; };
+		4E9F526618F05C2D0066328B /* DefaultBG.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DefaultBG.jpg; sourceTree = "<group>"; };
 		4E9FA09B185E0D7000E78867 /* navBarBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarBtn.png; sourceTree = "<group>"; };
 		4E9FA09F185E10A100E78867 /* textViewBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textViewBG.png; sourceTree = "<group>"; };
 		4EA5F61717F6D7D3001841E6 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
@@ -469,6 +474,8 @@
 				4E7A567618380A0400CFA316 /* FullScreenViewController.m */,
 				4E75C5BD18DF272B003EFC56 /* AGQuadControlViewController.h */,
 				4E75C5BE18DF272B003EFC56 /* AGQuadControlViewController.m */,
+				4E9F526218F04F240066328B /* BackgroundImagesViewController.h */,
+				4E9F526318F04F240066328B /* BackgroundImagesViewController.m */,
 				4E9A7E5B17F7449200E6ED7F /* DataModel */,
 				4E9A7E6217F7449200E6ED7F /* DataParsers */,
 				4EA5F61517F6D7D3001841E6 /* Libraries */,
@@ -496,6 +503,7 @@
 		4E7DED1717B957B600924B9E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E9F526618F05C2D0066328B /* DefaultBG.jpg */,
 				4E75C5AC18DF26B8003EFC56 /* arrow.png */,
 				4E75C5AD18DF26B8003EFC56 /* arrow@2x.png */,
 				4E75C5AE18DF26B8003EFC56 /* controlpoint_h.png */,
@@ -801,6 +809,7 @@
 				4E75C5B718DF26B8003EFC56 /* controlpoint.png in Resources */,
 				4E75C5B918DF26B8003EFC56 /* sampleimg_enhanced.jpg in Resources */,
 				4EA6C41C18620C1F00210CB1 /* LICENSE in Resources */,
+				4E9F526718F05C2D0066328B /* DefaultBG.jpg in Resources */,
 				4E7DECD317B92BA200924B9E /* MainStoryboard_iPad.storyboard in Resources */,
 				4E75C5BA18DF26B8003EFC56 /* sampleimg.jpg in Resources */,
 				4E9FA09C185E0D7100E78867 /* navBarBtn.png in Resources */,
@@ -892,6 +901,7 @@
 				4E9A7E8017F75E1500E6ED7F /* MainTableViewCell.m in Sources */,
 				4E2B7CA618524B90008DBE53 /* SearchCategoryViewController.m in Sources */,
 				4EA6C42518620C1F00210CB1 /* SDWebImagePrefetcher.m in Sources */,
+				4E9F526418F04F240066328B /* BackgroundImagesViewController.m in Sources */,
 				4E75C5FF18DF27AD003EFC56 /* CAAnimationBlockDelegate.m in Sources */,
 				4EA6C42818620C1F00210CB1 /* UIImage+MultiFormat.m in Sources */,
 				4EA6C42A18620C1F00210CB1 /* UIImageView+WebCache.m in Sources */,

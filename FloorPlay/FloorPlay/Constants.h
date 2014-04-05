@@ -25,6 +25,7 @@
 #define RELATIVE_IMAGES_COUNT 4
 
 #define SAVED_JSON_FILE @"JsonData.txt"
+#define SAVED_BG_IMAGES_JSON_FILE @"BGImagesJsonData.txt"
 
 #define kCategories @[@"By Color", @"By Size", @"By Pattern", @"By Material", @"By Price"]
 

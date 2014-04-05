@@ -601,7 +601,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sampleimg_enhanced.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Asb-fT-QTY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DefaultBG.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Asb-fT-QTY">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -718,6 +718,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="AnV-6f-opV" appends="YES" id="jE3-Od-j8U"/>
+                        </connections>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -753,11 +756,60 @@
                         <action selector="panGestureChanged:" destination="L4W-ZN-Swp" id="0f1-gF-VPM"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="AnV-6f-opV">
+                    <connections>
+                        <action selector="handleSingletap:" destination="L4W-ZN-Swp" id="RAT-3j-CnK"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2650" y="74"/>
         </scene>
+        <!--Background Images View Controller-->
+        <scene sceneID="6BD-Z7-tGa">
+            <objects>
+                <collectionViewController storyboardIdentifier="BackgroundImagesViewController" autoresizesArchivedViewToFullSize="NO" id="wFw-3E-Hmp" customClass="BackgroundImagesViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="QTF-dz-mMD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DLW-Sd-W1r">
+                            <size key="itemSize" width="140" height="140"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="hHj-oJ-ZdK">
+                                <rect key="frame" x="10" y="10" width="140" height="140"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="555" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabbar_icon.png" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FBN-Xn-SIX">
+                                            <rect key="frame" x="5" y="5" width="130" height="130"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="wFw-3E-Hmp" id="kU9-t3-WSW"/>
+                            <outlet property="delegate" destination="wFw-3E-Hmp" id="ODE-Oq-kgM"/>
+                        </connections>
+                    </collectionView>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I7m-YO-jM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3814" y="74"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="DefaultBG.jpg" width="818" height="768"/>
         <image name="Topbar.png" width="640" height="62"/>
         <image name="arrow_next.png" width="300" height="300"/>
         <image name="arrow_prev.png" width="300" height="300"/>
@@ -767,6 +819,7 @@
         <image name="fullscreen.png" width="100" height="100"/>
         <image name="logo.bmp" width="677" height="399"/>
         <image name="sampleimg_enhanced.jpg" width="898" height="596"/>
+        <image name="tabbar_icon.png" width="28" height="28"/>
         <image name="textViewBG.png" width="299" height="178"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
