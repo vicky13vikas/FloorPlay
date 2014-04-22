@@ -123,7 +123,7 @@
 
 - (IBAction)selectBackgroundTapped:(UIButton*)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose existing", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Camera Roll", @"Choose existing", nil];
     [actionSheet showFromRect:sender.frame inView:_barView animated:YES];
 }
 
@@ -192,9 +192,12 @@
     switch (buttonIndex)
     {
         case 0:
-            [self showCamera];
+            [self showCamerawithSource:UIImagePickerControllerSourceTypeCamera];
             break;
         case 1:
+            [self showCamerawithSource:UIImagePickerControllerSourceTypePhotoLibrary];
+            break;
+        case 2:
             [self loadbackgroundImages];
             break;
             
@@ -205,7 +208,7 @@
 
 #pragma -mark UIImagePickerController Delegates
 
-- (void)showCamera
+- (void)showCamerawithSource:(UIImagePickerControllerSourceType)sourceType
 {
     if(_cameraPicker == nil)
     {
@@ -213,7 +216,7 @@
         _cameraPicker.delegate = self;
     }
     
-    [_cameraPicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [_cameraPicker setSourceType:sourceType];
     
 //    [self presentViewController:_cameraPicker animated:YES completion:nil];
     CGRect rect = [_barView convertRect:_btnChangeBG.frame toView:self.view];
